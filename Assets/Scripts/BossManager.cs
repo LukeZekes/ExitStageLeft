@@ -9,6 +9,7 @@ public class BossManager : MonoBehaviour
         MELEE = 0,
         RANGED = 1
     }
+    public BossState state;
     private int health;
     public int Health
     {
@@ -24,6 +25,10 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        state = BossState.MELEE;
+    }
     private void BossDeath()
     {
 
