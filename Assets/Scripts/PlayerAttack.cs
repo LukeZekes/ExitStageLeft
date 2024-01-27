@@ -6,7 +6,9 @@ public class PlayerAttack : MonoBehaviour
 {
     public void MeleeAttack()
     {
-
+        /*
+         * if (player = player 1)
+        */
     }
 
     public void RangedAttack()
