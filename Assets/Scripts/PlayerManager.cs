@@ -25,13 +25,13 @@ public class PlayerManager : MonoBehaviour
 		}
 	}
 
-	private PlayerState playerState;
+	public PlayerState playerState;
 
-    private void Start()
-    {
+	private void Start()
+	{
 		playerState = PlayerState.MELEE;
 		health = 6;
-    }
+	}
 
 	// Switch player state
 	void SwitchPlayerState()
