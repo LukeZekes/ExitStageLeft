@@ -15,12 +15,11 @@ public class BossMovement : MonoBehaviour
     private void Start()
     {
         facingLeft = true;
-        bossManager = GetComponent<BossManager>();
         if (player == null) player = FindObjectOfType<PlayerManager>().GetComponent<Transform>();
     }
     void Update()
     {
-        if (bossManager.state == BossManager.BossState.MELEE)
+        if (BossManager.state == BossManager.BossState.MELEE)
         {
             Vector3 playerPos = player.position;
             // Flip boss around if player is on the wrong side

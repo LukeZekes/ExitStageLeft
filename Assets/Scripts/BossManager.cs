@@ -9,7 +9,7 @@ public class BossManager : MonoBehaviour
         MELEE = 0,
         RANGED = 1
     }
-    public BossState state;
+    public static BossState state;
     private int health;
     public int Health
     {
@@ -28,6 +28,18 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         state = BossState.MELEE;
+        health = 100;
+    }
+    private void SwitchState()
+    {
+        if (state == BossState.MELEE)
+        {
+            state = BossState.RANGED;
+        }
+        else
+        {
+            state = BossState.MELEE;
+        }
     }
     private void BossDeath()
     {
