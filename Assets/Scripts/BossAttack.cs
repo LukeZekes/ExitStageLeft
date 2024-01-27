@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class BossAttack : MonoBehaviour
@@ -7,6 +8,8 @@ public class BossAttack : MonoBehaviour
     [SerializeField]
     private float maxAttackTimer = 100; // Number of frames between attacks
     private float attackTimer;
+    [SerializeField]
+    private float axeAttackRange, breathAttackRange;
     void Start()
     {
         attackTimer = maxAttackTimer;
@@ -19,9 +22,18 @@ public class BossAttack : MonoBehaviour
             // Attack
             if (BossManager.state == BossManager.BossState.MELEE)
             {
-                // Pick a melee attack
-                if (rand == 0) AxeAttack();
+                // Stop movement while attacking
+                BossManager.allowMove = false;
+                float distanceToPlayer = (BossManager.player.position - transform.position).magnitude;
+                // Pick a melee attack randomly if both are possible, otherwise pick axe attack if only that is possible, otherwise do a fire breath that will miss
+                if (distanceToPlayer <= axeAttackRange && distanceToPlayer <= breathAttackRange)
+                {
+                    if (rand == 0) AxeAttack();
+                    else FireBreathAttack();
+                }
+                else if (distanceToPlayer <= axeAttackRange) AxeAttack();
                 else FireBreathAttack();
+                BossManager.allowMove = true;
             }
             else
             {

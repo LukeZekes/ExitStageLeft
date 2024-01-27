@@ -9,6 +9,8 @@ public class BossManager : MonoBehaviour
         MELEE = 0,
         RANGED = 1
     }
+    public static Transform player;
+    public static bool allowMove;
     public static BossState state;
     private int health;
     public int Health
@@ -29,6 +31,8 @@ public class BossManager : MonoBehaviour
     {
         state = BossState.MELEE;
         health = 100;
+        if (player == null) player = FindObjectOfType<PlayerManager>().GetComponent<Transform>();
+        allowMove = true;
     }
     private void SwitchState()
     {
