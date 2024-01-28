@@ -10,6 +10,8 @@ public class BossAttack : MonoBehaviour
     private float attackTimer;
     [SerializeField]
     private float axeAttackRange, breathAttackRange;
+    [SerializeField]
+    private GameObject[] dropPoints;
     void Start()
     {
         attackTimer = maxAttackTimer;
@@ -40,8 +42,9 @@ public class BossAttack : MonoBehaviour
                 else
                 {
                     // Pick a ranged attack
-                    if (rand == 0) FallingProjectileAttack();
-                    else FireballAttack();
+                    // if (rand == 0) StartCoroutine(FallingProjectileAttack());
+                    // else FireballAttack();
+                    StartCoroutine(FallingProjectileAttack());
                 }
 
                 attackTimer = maxAttackTimer;
@@ -58,9 +61,14 @@ public class BossAttack : MonoBehaviour
     {
         Debug.Log("Fire breath");
     }
-    void FallingProjectileAttack()
+    IEnumerator FallingProjectileAttack()
     {
         Debug.Log("Falling projectile");
+        foreach (GameObject dropPoint in dropPoints)
+        {
+            dropPoint.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
     void FireballAttack()
     {
