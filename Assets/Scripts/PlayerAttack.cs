@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private string playerState = "Melee";
+    //private string playerState = "Melee";
     private int blockTimer;
 
     private Animator animate;
@@ -79,31 +79,30 @@ public class PlayerAttack : MonoBehaviour
     //Melee and Range Attack Response
     public void AttackCall(InputAction.CallbackContext call)
     {
-        Debug.Log("Attack");
-
         if (PlayerManager.playerState == PlayerManager.PlayerState.MELEE)
         {
             animate.SetTrigger("MeleeTrig");
-
+            Debug.Log("Melee Attack");
         }
         else
         {
             animate.SetTrigger("RangeTrig");
+            Debug.Log("Range Attack");
         }
     }
 
     //Melee and Range Ability Response
     public void AbilityCall(InputAction.CallbackContext call)
     {
-        Debug.Log("Ability");
-
-        if (playerState == "Melee")
+        if (PlayerManager.playerState == PlayerManager.PlayerState.MELEE)
         {
             animate.SetTrigger("BlockTrig");
+            Debug.Log("Block");
         }
-        else if (playerState == "Range")
+        else
         {
-            animate.SetTrigger("DashTrig");
+            animate.SetTrigger("ForwardTrig");
+            Debug.Log("Dash");
         }
     }
 

@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 public class InputActionManager : MonoBehaviour
 {
     public InputActionAsset actions;
+    public InputActionReference switchA;
     private InputActionMap Melee;
     private InputActionMap Range;
-    private InputAction attackM, abilityM, moveM, switchM, attackR, abilityR, moveR, switchR;
+    private InputAction attackM, abilityM, moveM, attackR, abilityR, moveR;
     private PlayerManager playerManager;
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
@@ -21,12 +22,10 @@ public class InputActionManager : MonoBehaviour
         attackM = Melee.FindAction("Attack");
         abilityM = Melee.FindAction("Ability");
         moveM = Melee.FindAction("Move");
-        switchM = Melee.FindAction("Switch");
 
         attackR = Range.FindAction("Attack");
         abilityR = Range.FindAction("Ability");
         moveR = Range.FindAction("Move");
-        switchR = Range.FindAction("Switch");
     }
 
     private void Start()
@@ -35,22 +34,23 @@ public class InputActionManager : MonoBehaviour
         playerMovement = playerManager.GetComponent<PlayerMovement>();
         playerAttack = playerManager.GetComponent<PlayerAttack>();
 
-        switchM.started += Switch;
-        switchR.started += Switch;
+        switchA.action.started += Switch;
 
         playerMovement.enabledMoveAction = moveM;
 
-        attackM.started += playerAttack.AttackCall;
-        abilityM.started += playerAttack.AbilityCall;
+        attackM.performed += playerAttack.AttackCall;
+        abilityM.performed += playerAttack.AbilityCall;
 
-        attackR.started += playerAttack.AttackCall;
-        // abilityR.started += playerAttack.AbilityCall;
+        attackR.performed += playerAttack.AttackCall;
+        abilityR.started += playerAttack.AbilityCall;
         playerMovement.dashAction = abilityR;
 
         Melee.Enable(); // Start in melee
+        switchA.action.actionMap.Enable();
     }
     void Switch(InputAction.CallbackContext call)
     {
+        Debug.Log("Switch");
         PlayerManager.SwitchPlayerState();
         if (PlayerManager.playerState == PlayerManager.PlayerState.MELEE)
         {
@@ -60,6 +60,7 @@ public class InputActionManager : MonoBehaviour
             playerMovement.enabledMoveAction = moveM;
             playerMovement.dashAction.Disable();
         }
+
         else
         {
             Melee.Disable();
@@ -71,12 +72,18 @@ public class InputActionManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        switchA.action.actionMap.Enable();
+
+        // switchA.action.started += Switch;
         if (PlayerManager.playerState == PlayerManager.PlayerState.MELEE) Melee.Enable();
         else Range.Enable();
     }
 
     private void OnDisable()
     {
+        switchA.action.actionMap.Disable();
+
+        // switchA.action.started -= Switch;
         Melee.Disable();
         Range.Disable();
     }
