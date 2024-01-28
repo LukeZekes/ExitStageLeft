@@ -16,35 +16,38 @@ public class BossAttack : MonoBehaviour
     }
     private void Update()
     {
-        if (attackTimer <= 0)
+        if (!BossManager.isStunned)
         {
-            int rand = Random.Range(0, 2); // Randomly pick 0 or 1
-            // Attack
-            if (BossManager.state == BossManager.BossState.MELEE)
+            if (attackTimer <= 0)
             {
-                // Stop movement while attacking
-                BossManager.allowMove = false;
-                float distanceToPlayer = (BossManager.player.position - transform.position).magnitude;
-                // Pick a melee attack randomly if both are possible, otherwise pick axe attack if only that is possible, otherwise do a fire breath that will miss
-                if (distanceToPlayer <= axeAttackRange && distanceToPlayer <= breathAttackRange)
+                int rand = Random.Range(0, 2); // Randomly pick 0 or 1
+                                               // Attack
+                if (BossManager.state == BossManager.BossState.MELEE)
                 {
-                    if (rand == 0) AxeAttack();
+                    // Stop movement while attacking
+                    BossManager.allowMove = false;
+                    float distanceToPlayer = (BossManager.player.position - transform.position).magnitude;
+                    // Pick a melee attack randomly if both are possible, otherwise pick axe attack if only that is possible, otherwise do a fire breath that will miss
+                    if (distanceToPlayer <= axeAttackRange && distanceToPlayer <= breathAttackRange)
+                    {
+                        if (rand == 0) AxeAttack();
+                        else FireBreathAttack();
+                    }
+                    else if (distanceToPlayer <= axeAttackRange) AxeAttack();
                     else FireBreathAttack();
+                    BossManager.allowMove = true;
                 }
-                else if (distanceToPlayer <= axeAttackRange) AxeAttack();
-                else FireBreathAttack();
-                BossManager.allowMove = true;
-            }
-            else
-            {
-                // Pick a ranged attack
-                if (rand == 0) FallingProjectileAttack();
-                else FireballAttack();
-            }
+                else
+                {
+                    // Pick a ranged attack
+                    if (rand == 0) FallingProjectileAttack();
+                    else FireballAttack();
+                }
 
-            attackTimer = maxAttackTimer;
+                attackTimer = maxAttackTimer;
+            }
+            attackTimer -= Time.deltaTime;
         }
-        attackTimer -= Time.deltaTime;
     }
 
     void AxeAttack()
