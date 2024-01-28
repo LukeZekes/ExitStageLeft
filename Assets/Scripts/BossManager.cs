@@ -15,11 +15,11 @@ public class BossManager : MonoBehaviour
     private static int stage; // Start at stage 0 (ranged)
     private static float health;
     [SerializeField]
-    private static float maxHealth;
+    private static float maxHealth = 12;
     private static float stunTimer;
     [SerializeField]
     private static float stunDuration;
-
+    private static Transform healthBar;
     private void Start()
     {
         health = maxHealth;
@@ -27,6 +27,7 @@ public class BossManager : MonoBehaviour
         allowMove = false;
         state = BossState.RANGED;
         stage = 0; // Start at stage 0 (ranged)
+        healthBar = FindObjectOfType<BossHealthBar>().transform;
     }
     private void Update()
     {
@@ -55,6 +56,8 @@ public class BossManager : MonoBehaviour
     public static void DamageBoss()
     {
         health -= 1;
+        Debug.Log(health);
+        healthBar.localScale = new Vector3(Mathf.Max(0, health / maxHealth), healthBar.localScale.y, healthBar.localScale.z);
         if (stage == 0 && health <= maxHealth * 0.75f)
         {
             // Move to stage 1 (melee)
