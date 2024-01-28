@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour
         RANGED = 1
     }
     public static Transform player;
+    public static BossManager boss;
     public static bool allowMove, isStunned;
     public static BossState state;
     private static int stage; // Start at stage 0 (ranged)
@@ -20,10 +21,12 @@ public class BossManager : MonoBehaviour
     [SerializeField]
     private static float stunDuration;
     private static Transform healthBar;
+    public static Vector3 standPos = new Vector3(9.5f, 0, -10.78f);
     private void Start()
     {
         health = maxHealth;
         player = FindObjectOfType<PlayerManager>().GetComponent<Transform>();
+        boss = FindObjectOfType<BossManager>();
         allowMove = false;
         state = BossState.RANGED;
         stage = 0; // Start at stage 0 (ranged)
@@ -42,6 +45,7 @@ public class BossManager : MonoBehaviour
         if (state == BossState.MELEE)
         {
             state = BossState.RANGED;
+            boss.transform.position = standPos;
         }
         else
         {
