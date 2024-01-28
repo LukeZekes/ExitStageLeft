@@ -16,9 +16,9 @@ public class BossManager : MonoBehaviour
     private static float health;
     [SerializeField]
     private static float maxHealth;
-    private float stunTimer;
+    private static float stunTimer;
     [SerializeField]
-    private float stunDuration;
+    private static float stunDuration;
 
     private void Start()
     {
@@ -81,5 +81,10 @@ public class BossManager : MonoBehaviour
             health = 0;
             BossDeath();
         }
+    }
+    public static void Stun()
+    {
+        isStunned = true;
+        stunTimer = stunDuration;
     }
 }
