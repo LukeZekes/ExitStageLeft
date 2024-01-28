@@ -35,8 +35,8 @@ public class PlayerManager : MonoBehaviour
 	}
 	public static void TakeDamage()
 	{
-		health -= 1;
 		hearts[health - 1].enabled = false;
+		health -= 1;
 		if (health <= 0)
 		{
 			health = 0;
