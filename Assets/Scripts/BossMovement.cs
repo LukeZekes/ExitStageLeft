@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-    public Transform player;
-    private BossManager bossManager;
     private bool facingLeft;
     [SerializeField]
     private float speed = 0;
@@ -15,14 +13,12 @@ public class BossMovement : MonoBehaviour
     private void Start()
     {
         facingLeft = true;
-        bossManager = GetComponent<BossManager>();
-        if (player == null) player = FindObjectOfType<PlayerManager>().GetComponent<Transform>();
     }
     void Update()
     {
-        if (bossManager.state == BossManager.BossState.MELEE)
+        if (BossManager.allowMove && BossManager.state == BossManager.BossState.MELEE)
         {
-            Vector3 playerPos = player.position;
+            Vector3 playerPos = BossManager.player.position;
             // Flip boss around if player is on the wrong side
             if (facingLeft && playerPos.z > transform.position.z)
             {
