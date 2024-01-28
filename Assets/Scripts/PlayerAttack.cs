@@ -7,35 +7,79 @@ public class PlayerAttack : MonoBehaviour
 {
     private string playerState = "Melee";
     public Animator animate;
-    //private int blockTime;
 
     //Reference to Input System: Attack
-    public InputActionReference attack;
-    public InputActionReference ability;
-    public InputActionReference switchP;
+    public InputActionMap Melee;
+    public InputActionMap Range;
 
+    ///*
+    private InputAction attackM;
+    private InputAction abilityM;
+
+    private InputAction attackR;
+    private InputAction abilityR;
+
+    public InputActionReference switchP;
+    //*/
+
+    public void Awake()
+    {
+        attackM = Melee.FindAction("Attack");
+        abilityM = Melee.FindAction("Ability");
+
+        attackR = Range.FindAction("Attack");
+        abilityR = Range.FindAction("Ability");
+    }
+
+    
     //When Button is pressed, will call to Input System to do action
     private void OnEnable()
     {
-        attack.action.started += AttackCall;
-        ability.action.started += AbilityCall;
+        attackM.started += AttackCall;
+        abilityM.started += AbilityCall;
+
+        attackR.started += AttackCall;
+        abilityR.started += AbilityCall;
+
         switchP.action.started += SwitchCall;
     }
 
     private void OnDisable()
     {
-        attack.action.started -= AttackCall;
-        ability.action.started -= AbilityCall;
+        attackM.started -= AttackCall;
+        abilityM.started -= AbilityCall;
+
+        attackR.started -= AttackCall;
+        abilityR.started -= AbilityCall;
+
         switchP.action.started -= SwitchCall;
     }
+
+    public void Update()
+    {
+        if (playerState == "Melee")
+        {
+            Melee.Enable();
+            Range.Disable();
+        }
+
+        else if (playerState == "Range")
+        {
+            Melee.Disable();
+            Range.Enable();
+        }
+    }
+
 
     //Melee and Range Attack Response
     private void AttackCall(InputAction.CallbackContext call)
     {
         Debug.Log("Attack");
+
         if (playerState == "Melee")
         {
             animate.SetTrigger("MeleeTrig");
+           
         }
 
         else if(playerState == "Range")
@@ -52,13 +96,16 @@ public class PlayerAttack : MonoBehaviour
         if (playerState == "Melee")
         {
             animate.SetTrigger("BlockTrig");
+
+            
         }
 
         /*
+        
         else if (playerState == "Range")
         {
-            animate.SetTrigger("DashTrig, true);
-            ResetBool("DashButton");
+            animate.SetTrigger("DashTrig", true);
+            //ResetBool("DashButton");
         }
         */
     }
