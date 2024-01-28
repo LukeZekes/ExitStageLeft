@@ -10,39 +10,38 @@ public class PlayerManager : MonoBehaviour
 		MELEE = 0,
 		RANGED = 1
 	}
-	private int health;
-	public int Health
-	{
-		get { return this.health; }
-		set
-		{
-			health = value;
-			if (health <= 0)
-			{
-				health = 0;
-				PlayerDeath();
-			}
-		}
-	}
-
-	public PlayerState playerState;
+	private static SpriteRenderer[] hearts;
+	private static int health;
+	public static PlayerState playerState;
 
 	private void Start()
 	{
 		playerState = PlayerState.MELEE;
 		health = 6;
+		hearts = GameObject.Find("HealthUI").GetComponentsInChildren<SpriteRenderer>();
+		foreach (SpriteRenderer h in hearts) h.enabled = true;
 	}
 
 	// Switch player state
-	void SwitchPlayerState()
+	public static void SwitchPlayerState()
 	{
 		if (playerState == PlayerState.MELEE) playerState = PlayerState.RANGED;
 		else playerState = PlayerState.RANGED;
 	}
 
-	void PlayerDeath()
+	private static void PlayerDeath()
 	{
 		Debug.Log("Game over");
+	}
+	public static void TakeDamage()
+	{
+		health -= 1;
+		hearts[health - 1].enabled = false;
+		if (health <= 0)
+		{
+			health = 0;
+			PlayerDeath();
+		}
 	}
 
 }
