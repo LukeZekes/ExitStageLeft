@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
 	public static void SwitchPlayerState()
 	{
 		if (playerState == PlayerState.MELEE) playerState = PlayerState.RANGED;
-		else playerState = PlayerState.RANGED;
+		else playerState = PlayerState.MELEE;
 	}
 
 	private static void PlayerDeath()
