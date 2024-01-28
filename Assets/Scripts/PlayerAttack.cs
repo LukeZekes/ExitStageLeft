@@ -102,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             animate.SetTrigger("ForwardTrig");
-            Debug.Log("Dash");
+            //Debug.Log("Dash");
         }
     }
 
