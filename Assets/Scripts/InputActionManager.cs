@@ -54,19 +54,17 @@ public class InputActionManager : MonoBehaviour
         PlayerManager.SwitchPlayerState();
         if (PlayerManager.playerState == PlayerManager.PlayerState.MELEE)
         {
-            Melee.Enable();
-            Range.Disable();
-
             playerMovement.enabledMoveAction = moveM;
             playerMovement.dashAction.Disable();
+            Melee.Enable();
+            Range.Disable();
         }
         else
         {
-            Melee.Disable();
-            Range.Enable();
-
             playerMovement.enabledMoveAction = moveR;
             playerMovement.dashAction.Enable();
+            Melee.Disable();
+            Range.Enable();
         }
     }
     private void OnEnable()

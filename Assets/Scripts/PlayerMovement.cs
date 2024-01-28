@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr;
     [HideInInspector]
     public InputAction enabledMoveAction, dashAction;
+
+    [SerializeField]
+    private Vector3 minBounds, maxBounds;
 
     private void Start()
     {
@@ -62,6 +66,14 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(playerMovement * speed * Time.deltaTime);
+        if (transform.position.x < minBounds.x) transform.position = new Vector3(minBounds.x, transform.position.y, transform.position.z);
+        else if (transform.position.x > maxBounds.x) transform.position = new Vector3(maxBounds.x, transform.position.y, transform.position.z);
+
+        // if (transform.position.y < minBounds.y) transform.position = new Vector3(transform.position.x, minBounds.y, transform.position.z);
+        // else if (transform.position.y > maxBounds.y) transform.position = new Vector3(transform.position.x, maxBounds.y, transform.position.z);
+
+        if (transform.position.z < minBounds.z) transform.position = new Vector3(transform.position.x, transform.position.y, minBounds.z);
+        else if (transform.position.z > maxBounds.z) transform.position = new Vector3(transform.position.x, transform.position.y, maxBounds.z);
     }
 
     public IEnumerator Dash(direction dir)
