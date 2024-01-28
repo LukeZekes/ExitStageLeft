@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        speed = 3.0f;
         dir = direction.RIGHT;
         prevDir = direction.RIGHT;
         sr = GetComponent<SpriteRenderer>();
@@ -35,8 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (enabledMoveAction is null) mvmtValues = Vector2.zero;
-        else mvmtValues = enabledMoveAction.ReadValue<Vector2>();
+        mvmtValues = enabledMoveAction.ReadValue<Vector2>();
         dashing = dashAction.enabled ? dashAction.ReadValue<float>() > 0 && !dashLock : false;
 
         if (dashing)
