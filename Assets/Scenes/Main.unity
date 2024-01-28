@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 45220630588011360, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1111025481286659216, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -195,6 +199,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3444255741960477816, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594711642665937479, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597653800963319846, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5698097303500146873, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -211,9 +227,17 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8631618876559698333, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8641985663935771503, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691929753695243991, guid: bbf541838a025c0459f724fbd47579dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2038,6 +2062,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6087744358956458364, guid: ff700c56e27fcaf4291a52cac6f3d0af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904842966748098897, guid: ff700c56e27fcaf4291a52cac6f3d0af, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
