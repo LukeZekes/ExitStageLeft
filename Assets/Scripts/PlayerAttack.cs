@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     private string playerState = "Melee";
     private int blockTimer;
 
-    public Animator animate;
+    private Animator animate;
 
     //Reference to Input System: Attack
     // [HideInInspector]
@@ -33,7 +33,10 @@ public class PlayerAttack : MonoBehaviour
         // abilityR = Range.FindAction("Ability");
     }
 
-
+    private void Start()
+    {
+        animate = GetComponent<Animator>();
+    }
     //When Button is pressed, will call to Input System to do action
     // private void OnEnable()
     // {
