@@ -44,6 +44,9 @@ GameObject:
   - component: {fileID: 9201967350617503700}
   - component: {fileID: 2047437302492505581}
   - component: {fileID: 1910847454898915313}
+  - component: {fileID: 2115611191038661121}
+  - component: {fileID: 6374851807144056917}
+  - component: {fileID: 611771144211536585}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -229,84 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403775904a52752479cfef42f22daaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animate: {fileID: 1910847454898915313}
-  Melee:
-    m_Name: Melee
-    m_Id: 3865441a-bb19-4c38-95db-2ff2b12453fc
-    m_Asset: {fileID: 0}
-    m_Actions:
-    - m_Name: Attack
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: 10c1d517-a767-4e5c-89e1-b8fcbc7aacc6
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    - m_Name: Ability
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: ebb88352-68e3-4eaf-9e15-308f8c8f05c7
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Bindings:
-    - m_Name: 
-      m_Id: 6a82f270-1522-4f3c-b3d6-3a9961a9395c
-      m_Path: <Gamepad>/buttonEast
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Attack
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 07567e91-af90-42d7-a539-9a45878f1547
-      m_Path: <Gamepad>/leftTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Ability
-      m_Flags: 0
-  Range:
-    m_Name: Range
-    m_Id: 66e130f9-cb79-4192-b01e-9995d7eea8cd
-    m_Asset: {fileID: 0}
-    m_Actions:
-    - m_Name: Attack
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: ae270b93-4f8f-4033-8139-acc824bb52ca
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    - m_Name: Ability
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: 9fc55f5a-aff9-4633-a20d-f05021f212ef
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Bindings:
-    - m_Name: 
-      m_Id: a68f9dfc-25d4-4889-9b16-c6862c9d7747
-      m_Path: <Gamepad>/leftTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Attack
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 512ebeab-e372-402f-a029-b0ee81e7874d
-      m_Path: <Gamepad>/rightTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Ability
-      m_Flags: 0
-  switchP: {fileID: -5658991800451993906, guid: 413f0d4afa6e4104f93865d7feda8326, type: 3}
 --- !u!95 &1910847454898915313
 Animator:
   serializedVersion: 5
@@ -328,3 +253,58 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2115611191038661121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417444838213441199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd15d82329dbd645bd6428a5c4f8471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6374851807144056917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417444838213441199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a4c353ba9422141bb763abf978fb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  enabledMoveAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6fb585c3-0d5d-4c4c-98a1-ad6c5028adca
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  dashAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 35fe698a-4202-4c10-8add-a1d91459eef2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!114 &611771144211536585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417444838213441199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403775904a52752479cfef42f22daaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
