@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_MeleeAttack
+  m_Name: Boss_ForwardDash
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 8e6bcaa462f0a6b47bfba98e1d714f72, type: 3}
+      value: {fileID: 21300000, guid: 6a34d9e1f6f0fa04b922ddb70e297dc0, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 8e6bcaa462f0a6b47bfba98e1d714f72, type: 3}
+      value: {fileID: 21300000, guid: 6a34d9e1f6f0fa04b922ddb70e297dc0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 8e6bcaa462f0a6b47bfba98e1d714f72, type: 3}
-    - {fileID: 21300000, guid: 8e6bcaa462f0a6b47bfba98e1d714f72, type: 3}
+    - {fileID: 21300000, guid: 6a34d9e1f6f0fa04b922ddb70e297dc0, type: 3}
+    - {fileID: 21300000, guid: 6a34d9e1f6f0fa04b922ddb70e297dc0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
