@@ -7,12 +7,16 @@ public class InputActionManager : MonoBehaviour
 {
     public InputActionAsset actions;
     public InputActionReference switchA;
+
     private InputActionMap Melee;
     private InputActionMap Range;
     private InputAction attackM, abilityM, moveM, attackR, abilityR, moveR;
+
     private PlayerManager playerManager;
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
+
+    private Animator animate;
 
     private void Awake()
     {
@@ -47,6 +51,11 @@ public class InputActionManager : MonoBehaviour
 
         Melee.Enable(); // Start in melee
         switchA.action.actionMap.Enable();
+
+    }
+    public void AssignAnimator()
+    {
+        animate = GameManager.player.GetComponent<Animator>();
     }
     void Switch(InputAction.CallbackContext call)
     {
@@ -58,6 +67,8 @@ public class InputActionManager : MonoBehaviour
             playerMovement.dashAction.Disable();
             Melee.Enable();
             Range.Disable();
+
+            animate.SetBool("State", false);
         }
 
         else
@@ -66,6 +77,8 @@ public class InputActionManager : MonoBehaviour
             playerMovement.dashAction.Enable();
             Melee.Disable();
             Range.Enable();
+
+            animate.SetBool("State", true);
         }
     }
     private void OnEnable()
