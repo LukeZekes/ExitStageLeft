@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
     private string playerState = "Melee";
+    private int blockTimer;
+
     public Animator animate;
 
     //Reference to Input System: Attack
@@ -95,18 +97,11 @@ public class PlayerAttack : MonoBehaviour
         if (playerState == "Melee")
         {
             animate.SetTrigger("BlockTrig");
-
-
         }
-
-        /*
-        
         else if (playerState == "Range")
         {
-            animate.SetTrigger("DashTrig", true);
-            //ResetBool("DashButton");
+            animate.SetTrigger("DashTrig");
         }
-        */
     }
 
     //Switch to Melee/Range Player
