@@ -54,7 +54,7 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-        if (player == null) player = FindObjectOfType<PlayerManager>().GetComponent<Transform>();
+        player = FindObjectOfType<PlayerManager>().GetComponent<Transform>();
         allowMove = false;
         state = BossState.RANGED;
         stage = 0; // Start at stage 0 (ranged)
