@@ -21,24 +21,23 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mvmtValues;
     private Vector3 playerMovement;
 
-    public GameObject Player;
     private SpriteRenderer sr;
+    [HideInInspector]
+    public InputAction enabledMoveAction, dashAction;
 
-    public InputActionReference move;
-    public InputActionReference dash;
-    
     private void Start()
     {
         speed = 3.0f;
         dir = direction.RIGHT;
         prevDir = direction.RIGHT;
-        sr = Player.GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        mvmtValues = move.action.ReadValue<Vector2>();
-        dashing = dash.action.ReadValue<float>() > 0 && !dashLock;
+        if (enabledMoveAction is null) mvmtValues = Vector2.zero;
+        else mvmtValues = enabledMoveAction.ReadValue<Vector2>();
+        dashing = dashAction.enabled ? dashAction.ReadValue<float>() > 0 && !dashLock : false;
 
         if (dashing)
         {
@@ -64,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Player.transform.Translate(playerMovement * speed * Time.deltaTime);
+        transform.Translate(playerMovement * speed * Time.deltaTime);
     }
 
     public IEnumerator Dash(direction dir)
@@ -73,23 +72,23 @@ public class PlayerMovement : MonoBehaviour
         int multiplier = (dir == direction.RIGHT) ? 1 : -1;
         dashLock = true;
         dashForce = 8.0f * multiplier;
-        
-            while (dashForce != 0.0f)
+
+        while (dashForce != 0.0f)
+        {
+            if (dir == direction.RIGHT)
             {
-                if (dir == direction.RIGHT)
-                {
-                    dashForce = (dashForce / 1.2f) - 0.5f;
-                    yield return new WaitForSeconds(0.03f);
-                    if (dashForce < 0.0f) dashForce = 0.0f;
-                }
-                else
-                {
-                    dashForce = (dashForce / 1.2f) + 0.5f;
-                    yield return new WaitForSeconds(0.03f);
-                    if (dashForce > 0.0f) dashForce = 0.0f;
-                }
-                    
+                dashForce = (dashForce / 1.2f) - 0.5f;
+                yield return new WaitForSeconds(0.03f);
+                if (dashForce < 0.0f) dashForce = 0.0f;
             }
+            else
+            {
+                dashForce = (dashForce / 1.2f) + 0.5f;
+                yield return new WaitForSeconds(0.03f);
+                if (dashForce > 0.0f) dashForce = 0.0f;
+            }
+
+        }
         yield return new WaitForSeconds(0.2f);
 
         dashLock = false;

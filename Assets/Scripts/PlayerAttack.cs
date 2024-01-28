@@ -9,87 +9,86 @@ public class PlayerAttack : MonoBehaviour
     public Animator animate;
 
     //Reference to Input System: Attack
-    public InputActionMap Melee;
-    public InputActionMap Range;
+    // [HideInInspector]
+    // public InputActionMap Melee, Range;
 
-    ///*
-    private InputAction attackM;
-    private InputAction abilityM;
+    // ///*
+    // private InputAction attackM;
+    // private InputAction abilityM;
 
-    private InputAction attackR;
-    private InputAction abilityR;
+    // private InputAction attackR;
+    // private InputAction abilityR;
 
-    public InputActionReference switchP;
+    // public InputActionReference switchP;
     //*/
 
     public void Awake()
     {
-        attackM = Melee.FindAction("Attack");
-        abilityM = Melee.FindAction("Ability");
+        // attackM = Melee.FindAction("Attack");
+        // abilityM = Melee.FindAction("Ability");
 
-        attackR = Range.FindAction("Attack");
-        abilityR = Range.FindAction("Ability");
+        // attackR = Range.FindAction("Attack");
+        // abilityR = Range.FindAction("Ability");
     }
 
-    
+
     //When Button is pressed, will call to Input System to do action
-    private void OnEnable()
-    {
-        attackM.started += AttackCall;
-        abilityM.started += AbilityCall;
+    // private void OnEnable()
+    // {
+    //     attackM.started += AttackCall;
+    //     abilityM.started += AbilityCall;
 
-        attackR.started += AttackCall;
-        abilityR.started += AbilityCall;
+    //     attackR.started += AttackCall;
+    //     abilityR.started += AbilityCall;
 
-        switchP.action.started += SwitchCall;
-    }
+    //     switchP.action.started += SwitchCall;
+    // }
 
-    private void OnDisable()
-    {
-        attackM.started -= AttackCall;
-        abilityM.started -= AbilityCall;
+    // private void OnDisable()
+    // {
+    //     attackM.started -= AttackCall;
+    //     abilityM.started -= AbilityCall;
 
-        attackR.started -= AttackCall;
-        abilityR.started -= AbilityCall;
+    //     attackR.started -= AttackCall;
+    //     abilityR.started -= AbilityCall;
 
-        switchP.action.started -= SwitchCall;
-    }
+    //     switchP.action.started -= SwitchCall;
+    // }
 
-    public void Update()
-    {
-        if (playerState == "Melee")
-        {
-            Melee.Enable();
-            Range.Disable();
-        }
+    // public void Update()
+    // {
+    //     if (playerState == "Melee")
+    //     {
+    //         Melee.Enable();
+    //         Range.Disable();
+    //     }
 
-        else if (playerState == "Range")
-        {
-            Melee.Disable();
-            Range.Enable();
-        }
-    }
+    //     else if (playerState == "Range")
+    //     {
+    //         Melee.Disable();
+    //         Range.Enable();
+    //     }
+    // }
 
 
     //Melee and Range Attack Response
-    private void AttackCall(InputAction.CallbackContext call)
+    public void AttackCall(InputAction.CallbackContext call)
     {
         Debug.Log("Attack");
 
-        if (playerState == "Melee")
+        if (PlayerManager.playerState == PlayerManager.PlayerState.MELEE)
         {
             animate.SetTrigger("MeleeTrig");
-           
-        }
 
-        else if(playerState == "Range")
+        }
+        else
         {
             animate.SetTrigger("RangeTrig");
         }
     }
 
     //Melee and Range Ability Response
-    private void AbilityCall(InputAction.CallbackContext call)
+    public void AbilityCall(InputAction.CallbackContext call)
     {
         Debug.Log("Ability");
 
@@ -97,7 +96,7 @@ public class PlayerAttack : MonoBehaviour
         {
             animate.SetTrigger("BlockTrig");
 
-            
+
         }
 
         /*
@@ -111,26 +110,26 @@ public class PlayerAttack : MonoBehaviour
     }
 
     //Switch to Melee/Range Player
-    private void SwitchCall(InputAction.CallbackContext call)
-    {
-        if (playerState == "Melee")
-        {
-            playerState = "Range";
-            Debug.Log("Switched to Range");
-        }
+    // private void SwitchCall(InputAction.CallbackContext call)
+    // {
+    //     if (playerState == "Melee")
+    //     {
+    //         playerState = "Range";
+    //         Debug.Log("Switched to Range");
+    //     }
 
-        else if (playerState == "Range")
-        {
-            playerState = "Melee";
-            Debug.Log("Switched to Melee");
-        }
+    //     else if (playerState == "Range")
+    //     {
+    //         playerState = "Melee";
+    //         Debug.Log("Switched to Melee");
+    //     }
 
-    }
+    // }
 
     public void MeleeAttack(Input value)
     {
 
-    } 
+    }
 
     public void RangedAttack()
     {
@@ -144,7 +143,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Dash()
     {
-       
+
     }
 
     /*

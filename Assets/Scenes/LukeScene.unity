@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 98091177}
   - component: {fileID: 98091174}
   - component: {fileID: 98091173}
+  - component: {fileID: 98091178}
   - component: {fileID: 98091172}
   m_Layer: 0
   m_Name: Player
@@ -307,14 +308,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animate: {fileID: 98091172}
   Melee:
-    m_Name: 
-    m_Id: 
+    m_Name: Melee
+    m_Id: 63556cbd-244e-4977-abd1-4f3d84724786
     m_Asset: {fileID: 0}
     m_Actions: []
     m_Bindings: []
   Range:
-    m_Name: 
-    m_Id: 
+    m_Name: Range
+    m_Id: 438860cf-89ba-462a-bd7e-3364ca5aabf5
     m_Asset: {fileID: 0}
     m_Actions: []
     m_Bindings: []
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98091171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -414,7 +415,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Melee Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!212 &98091175
@@ -496,6 +497,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd15d82329dbd645bd6428a5c4f8471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &98091178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98091171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a4c353ba9422141bb763abf978fb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  enabledMoveAction:
+    m_Name: Enabled Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c132d11e-5654-4f41-b83e-e40680619753
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  dashAction:
+    m_Name: Dash
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e02cc335-4747-46c6-9e4b-0502949100c7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &168985526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566974243}
   - component: {fileID: 1566974242}
+  - component: {fileID: 1566974244}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1231,6 +1264,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1566974244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566974241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfef6b70723829458b9792139d48170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: 413f0d4afa6e4104f93865d7feda8326, type: 3}
 --- !u!1 &2095007046
 GameObject:
   m_ObjectHideFlags: 0
