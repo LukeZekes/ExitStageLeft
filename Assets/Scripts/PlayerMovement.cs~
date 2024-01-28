@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    float MovementSpeed = 2.0f;
+
+    private float hInput = Input.GetAxis("Horizontal"), vInput = Input.GetAxis("Vertical"); // Horizontal and vertical inout values
+    private Transform transform;
+
+    private void Start()
+    {
+        transform = GetComponent<Transform>();
+		float hValue = MovementSpeed * hInput, vValue = MovementSpeed * vInput;
+		transform.Translate(new Vector3(vValue, 0, hValue));
+    }
+}
