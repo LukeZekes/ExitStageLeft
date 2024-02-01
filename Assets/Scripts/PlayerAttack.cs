@@ -139,9 +139,16 @@ public class PlayerAttack : MonoBehaviour
     public void RangedAttack()
     {
         GameObject newArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 90, 0));
-        if (sr.flipX) newArrow.GetComponent<ArrowBehavior>().vel = -newArrow.GetComponent<ArrowBehavior>().vel;
         newArrow.GetComponent<SpriteRenderer>().enabled = true;
+        if (sr.flipX)
+        {
+            newArrow.GetComponent<ArrowBehavior>().vel = -newArrow.GetComponent<ArrowBehavior>().vel;
+            newArrow.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        
+        Destroy(newArrow, 3.0f);
     }
+   
 
     public void Block()
     {

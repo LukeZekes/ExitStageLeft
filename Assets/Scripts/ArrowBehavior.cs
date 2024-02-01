@@ -23,4 +23,6 @@ public class ArrowBehavior : MonoBehaviour
     {
         transform.Translate(vel * Time.deltaTime);
     }
+
+    
 }
