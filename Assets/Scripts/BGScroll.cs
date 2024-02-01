@@ -23,15 +23,15 @@ public class BGScroll : MonoBehaviour
         {
             if (player.position.z > (offset / scrMultiplier))
             {
-                Debug.Log("Scroll left.");
+                //Debug.Log("Scroll left.");
                 transform.position = new Vector3(transform.position.x, transform.position.y, (-player.position.z * scrMultiplier) + offset - distFromOffset);
             }
             else if (player.position.z < (offset / scrMultiplier))
             {
-                Debug.Log("Scroll right.");
+                //Debug.Log("Scroll right.");
                 transform.position = new Vector3(transform.position.x, transform.position.y, (-player.position.z * scrMultiplier) + offset - distFromOffset);
             }
         }
-        else Debug.Log("Stop scrolling.");
+        //else Debug.Log("Stop scrolling.");
     }
 }

@@ -10,6 +10,11 @@ public class PlayerAttack : MonoBehaviour
 
     private Animator animate;
 
+    PlayerMovement pm;
+    SpriteRenderer sr;
+
+    public GameObject arrow;
+
     //Reference to Input System: Attack
     // [HideInInspector]
     // public InputActionMap Melee, Range;
@@ -36,6 +41,8 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         animate = GetComponent<Animator>();
+        pm = GetComponent<PlayerMovement>();
+        sr = pm.GetComponent<SpriteRenderer>();
     }
     //When Button is pressed, will call to Input System to do action
     // private void OnEnable()
@@ -88,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
         {
             animate.SetTrigger("RangeTrig");
             Debug.Log("Range Attack");
+            RangedAttack();
         }
     }
 
@@ -130,7 +138,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void RangedAttack()
     {
-
+        GameObject newArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 90, 0));
+        if (sr.flipX) newArrow.GetComponent<ArrowBehavior>().vel = -newArrow.GetComponent<ArrowBehavior>().vel;
+        newArrow.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void Block()

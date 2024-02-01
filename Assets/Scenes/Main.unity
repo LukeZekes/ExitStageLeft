@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4326486, g: 0.46887964, b: 0.50373334, a: 1}
+  m_IndirectSpecularColor: {r: 0.43264893, g: 0.46888018, b: 0.5037337, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -798,6 +798,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2047437302492505581, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
+      propertyPath: arrow
+      value: 
+      objectReference: {fileID: 8621707255067004887, guid: 88251b21bcb037c3d9a155ef15412054, type: 3}
+    - target: {fileID: 4062404243984865199, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374851807144056917, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
+      propertyPath: maxBounds.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374851807144056917, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
+      propertyPath: maxBounds.z
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374851807144056917, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
+      propertyPath: minBounds.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374851807144056917, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
+      propertyPath: minBounds.z
+      value: -13
+      objectReference: {fileID: 0}
     - target: {fileID: 7349403321716712467, guid: 77608b728d76dfb45aefc64a3dc8e7fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.51
